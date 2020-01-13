@@ -1,4 +1,6 @@
 pipeline {
+  archiveArtifacts artifacts: '\'module/dist/**/*.zip\'', fingerprint: true
+
   agent {
     docker {
       image 'node:6-alpine'
