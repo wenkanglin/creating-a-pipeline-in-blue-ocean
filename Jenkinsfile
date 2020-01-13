@@ -8,19 +8,14 @@ pipeline {
   }
   stages {
     stage('Build') {
-      parallel {
-        stage('Build') {
-          steps {
-            sh 'npm i'
-          }
-        }
+      steps {
+        sh 'npm i'
+      }
+    }
 
-        stage('Test') {
-          steps {
-            echo 'hahaha'
-          }
-        }
-
+    stage('Build Other') {
+      steps {
+        build 'simple-node-js-react-npm-app'
       }
     }
 
