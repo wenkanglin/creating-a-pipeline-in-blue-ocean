@@ -1,6 +1,4 @@
 pipeline {
-  archiveArtifacts artifacts: '\'module/dist/**/*.zip\'', fingerprint: true
-
   agent {
     docker {
       image 'node:6-alpine'
@@ -12,6 +10,12 @@ pipeline {
     stage('Build') {
       steps {
         sh 'npm i'
+      }
+    }
+
+    stage('Build Other') {
+      steps {
+        build 'simple-node-js-react-npm-app'
       }
     }
 
